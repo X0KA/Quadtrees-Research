@@ -41,7 +41,10 @@
       <Filter>Tools\Timers</Filter>
     </ClCompile>
     <ClCompile Include="Quadtree.cpp">
-      <Filter>Tools</Filter>
+      <Filter>Tools\Quadtrees</Filter>
+    </ClCompile>
+    <ClCompile Include="TileQuadtree.cpp">
+      <Filter>Tools\Quadtrees</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,7 +97,10 @@
       <Filter>Tools\Timers</Filter>
     </ClInclude>
     <ClInclude Include="Quadtree.h">
-      <Filter>Tools</Filter>
+      <Filter>Tools\Quadtrees</Filter>
+    </ClInclude>
+    <ClInclude Include="TileQuadtree.h">
+      <Filter>Tools\Quadtrees</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +133,9 @@
     </Filter>
     <Filter Include="Tools\Timers">
       <UniqueIdentifier>{44f68f56-2713-477a-b7af-8463a30c0c99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Quadtrees">
+      <UniqueIdentifier>{138d002b-eb36-4e4b-940f-3fd0c2861ea9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

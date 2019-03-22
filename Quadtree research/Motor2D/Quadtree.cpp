@@ -6,43 +6,44 @@
 #include "j1Render.h"
 #include "j1App.h"
 
-Quadtree::Quadtree(uint level, SDL_Rect coords):level(level),coords(coords)
+Quadtree::Quadtree(uint max_levels, uint level, SDL_Rect coords) :max_levels(max_levels), level(level), section(section)
 {
-	for (int i = 0; i < 4; i++)
-		nodes[i] = nullptr;
+	/*for (int i = 0; i < 4; i++)
+		nodes[i] = nullptr;*/
 
-}
-
-int Quadtree::GetIndex(SDL_Rect section)
-{
-	int ret = -1;
-
-
-	return ret;
 }
 
 void Quadtree::Split()
 {
-	if (level == max_levels)
+	/*if (level == max_levels || nodes[1]!=nullptr)
 		return;
 
-	nodes[0] = new Quadtree(level + 1, { coords.x,coords.y, coords.w / 2, coords.h / 2 });
-	nodes[1] = new Quadtree(level + 1, { coords.x + coords.w / 2,coords.y, coords.w / 2, coords.h / 2 });
-	nodes[2] = new Quadtree(level + 1, { coords.x,coords.y + coords.h / 2 , coords.w / 2, coords.h / 2 });
-	nodes[3] = new Quadtree(level + 1, { coords.x+coords.w / 2,coords.y + coords.h/2, coords.w / 2, coords.h / 2 });
+	nodes[0] = new Quadtree(max_levels, level + 1, { section.x,section.y, section.w /  2, section.h / 2 });
+	nodes[1] = new Quadtree(max_levels,level + 1, { section.x + section.w / 2,section.y, section.w / 2, section.h / 2 });
+	nodes[2] = new Quadtree(max_levels,level + 1, { section.x,section.y + section.h / 2 , section.w / 2, section.h / 2 });
+	nodes[3] = new Quadtree(max_levels,level + 1, { section.x+ section.w / 2,section.y + section.h/2, section.w / 2, section.h / 2 });*/
 }
 
-void Quadtree::Draw()
+void Quadtree::DrawQuadtree() const
 {
-	App->render->DrawLine(coords.x, coords.y, coords.x, coords.y+ coords.h, 0,0,255);
-	App->render->DrawLine(coords.x, coords.y, coords.x+ coords.w, coords.y,0,0,255);
-	App->render->DrawLine(coords.x, coords.y + coords.h, coords.x + coords.w, coords.y + coords.h, 0, 0, 255);
-	App->render->DrawLine(coords.x + coords.w, coords.y, coords.x + coords.w, coords.y + coords.h, 0, 0, 255);
+	//App->render->DrawLine(section.x, section.y, section.x, section.y+ section.h, 0,0,255);
+	//App->render->DrawLine(section.x, section.y, section.x+ section.w, section.y,0,0,255);
+	//App->render->DrawLine(section.x, section.y + section.h, section.x + section.w, section.y + section.h, 0, 0, 255);
+	//App->render->DrawLine(section.x + section.w, section.y, section.x + section.w, section.y + section.h, 0, 0, 255);
 
-	for (int i = 0; i < 4; ++i)
+	//for (int i = 0; i < 4; ++i)
+	//{
+	//	if (nodes[i] != nullptr)
+	//		nodes[i]->DrawQuadtree();
+	//}
+
+}
+
+bool Quadtree::CheckTouch(const SDL_Rect& rect)
+{
+	if (rect.x + rect.w < section.x || section.x + section.w < rect.x || rect.y + rect.h < section.y || section.y + section.h < rect.y)
 	{
-		if (nodes[i] != nullptr)
-			nodes[i]->Draw();
+		return false;
 	}
-
+	return true;
 }

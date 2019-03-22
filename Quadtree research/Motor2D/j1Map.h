@@ -4,6 +4,8 @@
 #include "PugiXml/src/pugixml.hpp"
 #include "j1Module.h"
 
+class TileQuadtree;
+
 struct Properties
 {
 	struct Property
@@ -91,6 +93,9 @@ struct MapData
 	MapTypes			type;
 	std::list<TileSet*>	tilesets;
 	std::list<MapLayer*>layers;
+
+	//TEST
+	TileQuadtree*		tile_tree;
 };
 
 // ----------------------------------------------------

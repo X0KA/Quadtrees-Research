@@ -44,8 +44,8 @@ bool j1Scene::Start()
 
 	debug_tex = App->tex->Load("maps/path2.png");
 
-	skere = new Quadtree(1, { 0,0,1000,500 });
-	skere->Split();
+	int map_height = App->map->data.height*App->map->data.tile_height;
+	int map_width = App->map->data.width*App->map->data.tile_width;
 
 	return true;
 }
@@ -78,7 +78,6 @@ bool j1Scene::Update(float dt)
 
 	App->map->Draw();
 
-	skere->Draw();
 
 	return true;
 }

@@ -34,7 +34,6 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	Quadtree* skere;
 
 private:
 	SDL_Texture* debug_tex;

@@ -7,6 +7,8 @@
 #include <math.h>
 #include <sstream>
 
+#include "TileQuadtree.h"
+
 j1Map::j1Map() : j1Module(), map_loaded(false)
 {
 	name.assign("map");
