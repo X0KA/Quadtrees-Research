@@ -6,17 +6,18 @@ class Quadtree {
 public:
 
 	//Constructor
-	Quadtree(uint max_levels,uint level, SDL_Rect section);
+	Quadtree(uint max_levels, SDL_Rect section, uint level = 1);
 
 	//Split the node into 4 subnodes
-	virtual void Split();
+	virtual void Split() {};
 
-	void DrawQuadtree() const;
+	virtual void DrawQuadtree() const;
 
 	bool CheckTouch(const SDL_Rect& rect);
 
 protected:
 	
+	bool divided;			//True if this node has subnodes
 	uint max_levels;		//Max number of levels a quadtree will have
 	uint level;				//Position in the tree
 	SDL_Rect section;		//Position and size

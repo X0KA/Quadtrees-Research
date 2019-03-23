@@ -10,6 +10,7 @@
 #include "j1Scene.h"
 
 #include "Quadtree.h"
+#include "TileQuadtree.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -47,6 +48,10 @@ bool j1Scene::Start()
 	int map_height = App->map->data.height*App->map->data.tile_height;
 	int map_width = App->map->data.width*App->map->data.tile_width;
 
+	//TEST
+	
+	//TEST
+
 	return true;
 }
 
@@ -72,13 +77,26 @@ bool j1Scene::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->render->camera.x -= 1;
 
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-		App->win->ZoomOut();
-
+	
 
 	App->map->Draw();
 
+	//TEST
 
+	static std::list<MapLayer*>::iterator item = App->map->data.layers.begin();
+
+	static MapLayer* prrra = *item;
+
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+	{
+		
+			prrra->tile_tree->InsertTile(TileData(50, { 0, 300 }));
+		
+			prrra->tile_tree->InsertTile(TileData(50, { 0, 800 }));
+		prrra->tile_tree->InsertTile(TileData(50, { -200, 50 }));
+		prrra->tile_tree->InsertTile(TileData(50, { 400, 500 }));
+	}
+	//TEST
 	return true;
 }
 

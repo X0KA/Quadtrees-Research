@@ -5,7 +5,7 @@
 
 struct SDL_Texture;
 
-class Quadtree;
+class TileQuadtree;
 
 class j1Scene : public j1Module
 {
@@ -36,6 +36,9 @@ public:
 
 
 private:
+	//TEST
+	TileQuadtree* skere;
+
 	SDL_Texture* debug_tex;
 };
 

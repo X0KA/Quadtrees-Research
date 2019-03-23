@@ -38,6 +38,7 @@ struct MapLayer
 	std::string	name;
 	int			width;
 	int			height;
+	TileQuadtree*	tile_tree;
 	uint*		data;
 	Properties	properties;
 
@@ -93,9 +94,6 @@ struct MapData
 	MapTypes			type;
 	std::list<TileSet*>	tilesets;
 	std::list<MapLayer*>layers;
-
-	//TEST
-	TileQuadtree*		tile_tree;
 };
 
 // ----------------------------------------------------
