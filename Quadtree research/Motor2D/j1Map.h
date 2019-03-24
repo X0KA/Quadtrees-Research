@@ -99,6 +99,9 @@ struct MapData
 // ----------------------------------------------------
 class j1Map : public j1Module
 {
+
+	friend TileQuadtree;	//First time I use this :D
+
 public:
 
 	j1Map();

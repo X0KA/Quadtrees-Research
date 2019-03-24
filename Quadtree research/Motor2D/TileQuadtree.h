@@ -3,6 +3,7 @@
 
 #include "Quadtree.h"
 
+struct SDL_Texture;
 
 struct TileData
 {
@@ -29,17 +30,18 @@ public:
 
 	//DEBUG
 
-	void DrawQuadtree() const;
+	void DrawQuadtree();
 
 	
 
 protected: 
 
-	TileQuadtree* nodes[4];	//Subnodes of the current node
+	TileQuadtree* nodes[4];		//Subnodes of the current node
 	
-	TileData* tiles;		//Array which contains all the tiles
-	uint	size;			//Amount of tiles this node can store
-	uint	tiles_contained;//Amount of tiles this node currently stores
+	TileData* tiles;			//Array which contains all the tiles
+
+	uint	size;				//Amount of tiles this node can store
+	uint	tiles_contained;	//Amount of tiles this node currently stores
 	
 
 };

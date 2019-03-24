@@ -41,28 +41,9 @@ void j1Map::Draw()
 	for(; item != data.layers.end(); item = next(item))
 	{
 		MapLayer* layer = *item;
-
 		
-
-		for(int y = 0; y < data.height; ++y)
-		{
-			for(int x = 0; x < data.width; ++x)
-			{
-				int tile_id = layer->Get(x, y);
-				if(tile_id > 0)
-				{
-					TileSet* tileset = GetTilesetFromTileId(tile_id);
-
-					SDL_Rect r = tileset->GetTileRect(tile_id);
-					iPoint pos = MapToWorld(x, y);
-
-					App->render->Blit(tileset->texture, pos.x, pos.y, &r);
-
-				}
-			}
-		}
-		layer->tile_tree->DrawQuadtree();
 		layer->tile_tree->DrawMap();
+		layer->tile_tree->DrawQuadtree();
 	}
 }
 
@@ -414,18 +395,21 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 
 	//TEST
 	iPoint layer_size;
+	iPoint quadT_position(0,0);
 	switch (data.type)
 	{
 	case MAPTYPE_ORTHOGONAL:
-
+		layer_size.x = layer->width*App->map->data.tile_width;
+		layer_size.y = layer->height*App->map->data.tile_height;
+		quadT_position.x = 0;
 		break;
 	case MAPTYPE_ISOMETRIC:
 		layer_size.x = (layer->width + layer->height)*(App->map->data.tile_width *0.5f);
-		layer_size.y = (layer->width + layer->height) * (data.tile_height *0.5f);
-
+		layer_size.y = (layer->width + layer->height+1) * (data.tile_height *0.5f);
+		quadT_position.x = -layer_size.x + ((layer->width + 1)*App->map->data.tile_width / 2);
 		break;
 	}
-	layer->tile_tree = new TileQuadtree(7, {-layer_size.x+((layer->width)*App->map->data.tile_width /2), 0, layer_size.x,layer_size.y}, layer->width*layer->height);
+	layer->tile_tree = new TileQuadtree(8, {quadT_position.x, 0, layer_size.x,layer_size.y}, layer->width*layer->height*2.5f);
 	//TEST
 
 	if(layer_data == NULL)
