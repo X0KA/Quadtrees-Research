@@ -7,6 +7,7 @@
 #include "j1App.h"
 #include "j1Map.h"
 #include "j1Render.h"
+#include "j1Window.h"
 
 #include "TileQuadtree.h"
 
@@ -55,8 +56,8 @@ void TileQuadtree::InsertTile(TileData tile)
 	SDL_Rect tile_rect;
 	tile_rect.x = tile.position.x;
 	tile_rect.y = tile.position.y;
-	tile_rect.w = 64/*App->map->data.tile_width*/;
-	tile_rect.h = 64/*App->map->data.tile_height*/;
+	tile_rect.w = App->map->data.tile_width;
+	tile_rect.h = App->map->data.tile_height;
 
 	//If the node is in the lowest level, store the tile here
 	if (level == max_levels)
@@ -78,25 +79,62 @@ void TileQuadtree::InsertTile(TileData tile)
 			{
 				if (nodes[i]->CheckTouch({ tile_rect }))
 				{
-					nodes[i]->InsertTile(tile);
-					//break;
+					if (nodes[i]->tiles_contained < nodes[i]->size)
+					{
+						nodes[i]->InsertTile(tile);
+						break;
+					}
 				}
 			}
 		}
 	}
 }
 
+bool TileQuadtree::CheckVisibility()
+{
+	bool ret =true;
+	uint screen_w;
+	uint screen_h;
+	App->win->GetWindowSize(screen_w, screen_h);
+
+	if (-App->render->camera.x > (section.x + section.w) ||
+		(-App->render->camera.x + int(screen_w)) < section.x ||
+		-App->render->camera.h > (section.y + section.h) ||
+		(-App->render->camera.h + int(screen_h)) < section.y)
+		ret = false;
+
+	return ret;
+}
+
+void TileQuadtree::DrawMap()
+{
+	if (CheckVisibility()) {
+		App->render->DrawQuad(section, 255, 0, 0);
+	}
+}
+
 void TileQuadtree::DrawQuadtree() const
 {
-	for (int i = 0; i < 4; ++i)
+	if (level == 1)
 	{
-		if (nodes[i] != nullptr)
-			nodes[i]->DrawQuadtree();
+		App->render->DrawLine(section.x, section.y, section.x, section.y + section.h, 0, 0, 255);
+		App->render->DrawLine(section.x, section.y, section.x + section.w, section.y, 0, 0, 255);
+		App->render->DrawLine(section.x, section.y + section.h, section.x + section.w, section.y + section.h, 0, 0, 255);
+		App->render->DrawLine(section.x + section.w, section.y, section.x + section.w, section.y + section.h, 0, 0, 255);
 	}
 
-	App->render->DrawLine(section.x, section.y, section.x, section.y + section.h, 0, 0, 255);
-	App->render->DrawLine(section.x, section.y, section.x + section.w, section.y, 0, 0, 255);
-	App->render->DrawLine(section.x, section.y + section.h, section.x + section.w, section.y + section.h, 0, 0, 255);
-	App->render->DrawLine(section.x + section.w, section.y, section.x + section.w, section.y + section.h, 0, 0, 255);
+	if (divided == true)
+	{
+		App->render->DrawLine(section.x + section.w/2, section.y, section.x + section.w / 2, section.y+section.h, 0,0,255);
+		App->render->DrawLine(section.x, section.y + section.h / 2, section.x + section.w, section.y + section.h / 2,0,0,255);
+
+		if (level < max_levels - 1)
+		{
+			for (int i = 0; i < 4; ++i)
+			{
+				nodes[i]->DrawQuadtree();
+			}
+		}
+	}
 
 }

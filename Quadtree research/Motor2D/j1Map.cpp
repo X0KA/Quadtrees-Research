@@ -9,6 +9,8 @@
 
 #include "TileQuadtree.h"
 
+#include "j1Scene.h"
+
 j1Map::j1Map() : j1Module(), map_loaded(false)
 {
 	name.assign("map");
@@ -60,6 +62,7 @@ void j1Map::Draw()
 			}
 		}
 		layer->tile_tree->DrawQuadtree();
+		layer->tile_tree->DrawMap();
 	}
 }
 
@@ -410,8 +413,20 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 	pugi::xml_node layer_data = node.child("data");
 
 	//TEST
-	layer->tile_tree = new TileQuadtree(6, {(-layer->width * App->map->data.tile_width )/2, 0, layer->width* App->map->data.tile_width, layer->height* App->map->data.tile_height }, layer->width*layer->height);
+	iPoint layer_size;
+	switch (data.type)
+	{
+	case MAPTYPE_ORTHOGONAL:
 
+		break;
+	case MAPTYPE_ISOMETRIC:
+		layer_size.x = (layer->width + layer->height)*(App->map->data.tile_width *0.5f);
+		layer_size.y = (layer->width + layer->height) * (data.tile_height *0.5f);
+
+		break;
+	}
+	layer->tile_tree = new TileQuadtree(7, {-layer_size.x+((layer->width)*App->map->data.tile_width /2), 0, layer_size.x,layer_size.y}, layer->width*layer->height);
+	//TEST
 
 	if(layer_data == NULL)
 	{
@@ -427,19 +442,13 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 		int i = 0;
 		for(pugi::xml_node tile = layer_data.child("tile"); tile; tile = tile.next_sibling("tile"))
 		{
-			TileData tiledd(tile.attribute("gid").as_int(0), { i * 32,50 });
-			TileData tiledd2(tile.attribute("gid").as_int(0), { -i * 32,50 });
-
+			//TEST
+			iPoint tile_map_coordinates(App->map->MapToWorld((i - int(i / layer->width)*layer->width), int(i / layer->width)));
+			TileData tiledd(tile.attribute("gid").as_int(0), tile_map_coordinates);
 			layer->tile_tree->InsertTile(tiledd);
-			//layer->tile_tree->InsertTile(tiledd2);
-
-			//LOG("Position %d", tiledd.position.x);
+			//TEST
 
 			layer->data[i++] = tile.attribute("gid").as_int(0);
-
-			//LOG("%d", i / layer->width * 32);
-			
-
 		}
 	}
 

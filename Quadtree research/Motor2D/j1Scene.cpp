@@ -77,26 +77,8 @@ bool j1Scene::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->render->camera.x -= 1;
 
-	
-
 	App->map->Draw();
 
-	//TEST
-
-	static std::list<MapLayer*>::iterator item = App->map->data.layers.begin();
-
-	static MapLayer* prrra = *item;
-
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
-	{
-		
-			prrra->tile_tree->InsertTile(TileData(50, { 0, 300 }));
-		
-			prrra->tile_tree->InsertTile(TileData(50, { 0, 800 }));
-		prrra->tile_tree->InsertTile(TileData(50, { -200, 50 }));
-		prrra->tile_tree->InsertTile(TileData(50, { 400, 500 }));
-	}
-	//TEST
 	return true;
 }
 

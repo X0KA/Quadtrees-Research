@@ -21,9 +21,11 @@ public:
 
 	void Split();
 
-	void DrawMap(){}
-
 	void InsertTile(TileData tile);
+
+	bool CheckVisibility();
+
+	void DrawMap();
 
 	//DEBUG
 
