@@ -20,6 +20,8 @@ public:
 
 	TileQuadtree(uint max_levels, SDL_Rect section, uint size, uint level=1);
 
+	void CleanUp();
+
 	void Split();
 
 	void InsertTile(TileData tile);
@@ -27,6 +29,7 @@ public:
 	bool CheckVisibility();
 
 	void DrawMap();
+
 
 	//DEBUG
 

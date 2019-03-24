@@ -17,7 +17,6 @@ void Quadtree::DrawQuadtree() const
 	App->render->DrawLine(section.x, section.y, section.x+ section.w, section.y,0,0,255);
 	App->render->DrawLine(section.x, section.y + section.h, section.x + section.w, section.y + section.h, 0, 0, 255);
 	App->render->DrawLine(section.x + section.w, section.y, section.x + section.w, section.y + section.h, 0, 0, 255);
-
 }
 
 bool Quadtree::CheckTouch(const SDL_Rect& rect)

@@ -10,7 +10,6 @@
 #include "j1Window.h"
 #include "j1Textures.h"
 
-#include "TileQuadtree.h"
 
 
 
@@ -23,7 +22,7 @@ TileQuadtree::TileQuadtree(uint max_levels, SDL_Rect section, uint size, uint le
 	/*We will only store the tiles in the bottom nodes, 
 	so, if this node will have subnodes, it won't need room for tiles*/
 	if (level != max_levels)
-		tiles = nullptr;
+		tiles =NULL;
 
 	else
 	{
@@ -37,6 +36,20 @@ TileQuadtree::TileQuadtree(uint max_levels, SDL_Rect section, uint size, uint le
 	tiles_contained = 0;
 
 	assert(level <= max_levels,"MAX LEVELS > LEVELS");
+}
+
+void TileQuadtree::CleanUp()
+{
+	if (divided == true)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			nodes[i]->CleanUp();
+			nodes[i] = nullptr;
+		}
+
+	}
+	RELEASE(tiles);
 }
 
 void TileQuadtree::Split()

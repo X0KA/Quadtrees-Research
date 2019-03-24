@@ -13,6 +13,8 @@ public:
 
 	virtual void DrawQuadtree() const;
 
+	virtual void CleanUp() {};
+
 	bool CheckTouch(const SDL_Rect& rect);
 
 protected:

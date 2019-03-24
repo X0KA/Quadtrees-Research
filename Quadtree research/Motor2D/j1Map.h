@@ -4,7 +4,7 @@
 #include "PugiXml/src/pugixml.hpp"
 #include "j1Module.h"
 
-class TileQuadtree;
+#include "TileQuadtree.h"
 
 struct Properties
 {
@@ -48,6 +48,7 @@ struct MapLayer
 	~MapLayer()
 	{
 		RELEASE(data);
+		tile_tree->CleanUp();
 	}
 
 	inline uint Get(int x, int y) const
