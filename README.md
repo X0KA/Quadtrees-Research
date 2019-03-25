@@ -18,3 +18,28 @@ Now imagine how many iterations we would need in a scene like this one:
 <img src="images/lots_particles.png" ><br>
 
 And that’s where spacial partitioning appears and saves us.
+
+# Space partitioning
+
+In order to avoid iterations that are not needed (colliders too far from each other, tiles / polygons out of the screen), we can divide the space into different subsets.
+ 
+That process is called space partition. There are a lot of ways to divide the space, and depending on our needs we will choose one or another.
+ 
+* Quadtrees: divides the space into 4 equal subsets, each of them might be divided into 4 subsets, etc.
+
+<img src="images/quadtree.png" ><br>
+
+* Octrees: similar to the quadtrees, but used in 3D instead of 2D. Each node will have 8 children instead of 4.
+
+<img src="images/octree.png" ><br>
+
+* k-d trees: the space is divided into 2 subspaces, which might not be equal. The “partition lines” are always perpendicular to the coordinates axis.
+
+* AABB Trees: Creates subspaces for each pair of elements we need to check. Mostly used in dynamic entities like collisions.
+ 
+This are just a few ways to part the space. There are a lot more of them and honestly, we could spend an entire semester talking about different space partition data structures, but in this article I’m going to focus on Quadtrees.
+ 
+# Quadtrees
+
+As I said before, quadtrees are a data structure that divide the space into 4 sub regions (we can talk about nodes and subnodes). 
+
