@@ -21,11 +21,22 @@ void Quadtree::DrawQuadtree() const
 
 bool Quadtree::CheckTouch(const SDL_Rect& rect)
 {
-	if ((rect.x < section.x-rect.w/2) ||
+	//Middle point of the tile
+	iPoint pos(rect.x + rect.w/2, rect.y + rect.h/2);
+
+	if (pos.x < section.x ||
+		pos.x > section.x + section.w ||
+		pos.y < section.y ||
+		pos.y > section.y + section.h)
+		return false;
+
+	/*if ((rect.x < section.x-rect.w/2) ||
 		(rect.x + rect.w) > (section.x + section.w+ rect.w / 2) ||
 		(rect.y < section.y - rect.h / 2) ||
 		(rect.y + rect.h) > (section.y + section.h+ rect.h / 2))
-		return false;
+		return false;*/
+
+
 
 	return true;
 }
