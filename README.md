@@ -1,2 +1,2 @@
 ﻿Quadtrees research by Joan Marin Encinas
- Is this working correctly?
+ Is this working correctly? Is it?
