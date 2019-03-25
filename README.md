@@ -9,9 +9,12 @@ As its name says, this algorithms are generally problem-solving, but they scale 
  
 For example, in order to check the collisions of the particles of the system in the image, if we used a brute force algorithm, we would check each particlie colliding with the others, no matter their position.
 
-
 If we are working with a low amount of particles like in this image, we would iterate 72 (8x8) times each frame. But let’s say we are working with 100 particles, we would need 10.000 (100x100) iterations each frame.
+
+<img src="images/low_particles.png" ><br>
  
 Now imagine how many iterations we would need in a scene like this one:
 
+<img src="images/lots_particles.png" ><br>
 
+And that’s where spacial partitioning appears and saves us.
