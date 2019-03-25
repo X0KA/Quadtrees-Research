@@ -26,7 +26,7 @@ In order to avoid iterations that are not needed (colliders too far from each ot
  
 That process is called space partition. There are a lot of ways to divide the space, and depending on our needs we will choose one or another.
  
-* **Quadtrees**: divides the space into 4 equal subsets, each of them might be divided into 4 subsets, etc.
+* **Quadtrees**: divides the space into 4 subsets, each of them might be divided into 4 subsets, etc.
 
 <img src="images/quadtree.png" ><br>
 
@@ -49,5 +49,15 @@ This are just a **few** ways to part the space explained vrey superficially. The
  
 # Quadtrees
 
-As I said before, quadtrees are a data structure that divide the space into 4 sub regions. 
+As I said before, quadtrees are a data structure that divide the space into 4 sub regions. Each node will have four children, which will have four children each, etc. 
 
+Even though I'm going to use them from a "video game" aproach, they can be used in a lot of fields, such as image compression.
+
+ <img src="images/quadtree-image-compression.gif" ><br>
+ *Compression of an image using quadtrees*
+ 
+There are different types of quadtrees, but I will focus on the "Region Quadtrees", which are the most common and I think will be the most usefull in a 2D game.
+
+This quadtree divide the total space into four equal regions, which will be divided into four equal regions and so on until we reach the nodes that are at the bottom of the tree. 
+
+<img src="images/quadtree-1.png" ><br>
