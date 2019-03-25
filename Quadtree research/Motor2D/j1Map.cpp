@@ -14,6 +14,7 @@
 j1Map::j1Map() : j1Module(), map_loaded(false)
 {
 	name.assign("map");
+	draw_with_quadtrees = true;
 }
 
 // Destructor
@@ -41,9 +42,30 @@ void j1Map::Draw()
 	for(; item != data.layers.end(); item = next(item))
 	{
 		MapLayer* layer = *item;
-		
-		layer->tile_tree->DrawMap();
-		layer->tile_tree->DrawQuadtree();
+		if (draw_with_quadtrees == false)
+		{
+			for (int y = 0; y < data.height; ++y)
+			{
+				for (int x = 0; x < data.width; ++x)
+				{
+					int tile_id = layer->Get(x, y);
+					if (tile_id > 0)
+					{
+						TileSet* tileset = GetTilesetFromTileId(tile_id);
+
+						SDL_Rect r = tileset->GetTileRect(tile_id);
+						iPoint pos = MapToWorld(x, y);
+
+						App->render->Blit(tileset->texture, pos.x, pos.y, &r);
+					}
+				}
+			}
+		}
+		if (draw_with_quadtrees == true)
+		{
+			layer->tile_tree->DrawMap();
+			layer->tile_tree->DrawQuadtree();
+		}
 	}
 }
 
@@ -409,7 +431,7 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 		quadT_position.x = -layer_size.x + ((layer->width + 1)*App->map->data.tile_width / 2);
 		break;
 	}
-	layer->tile_tree = new TileQuadtree(8, {quadT_position.x, 0, layer_size.x,layer_size.y}, layer->width*layer->height);
+	layer->tile_tree = new TileQuadtree(9, {quadT_position.x, 0, layer_size.x,layer_size.y}, layer->width*layer->height*3);
 	//TEST
 
 	if(layer_data == NULL)

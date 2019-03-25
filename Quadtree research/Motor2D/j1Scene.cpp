@@ -77,6 +77,9 @@ bool j1Scene::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		App->render->camera.x -= 1;
 
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+		App->map->draw_with_quadtrees = !App->map->draw_with_quadtrees;
+
 	App->map->Draw();
 
 	return true;

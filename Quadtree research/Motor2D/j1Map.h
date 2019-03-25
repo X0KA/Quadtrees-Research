@@ -139,6 +139,7 @@ private:
 public:
 
 	MapData data;
+	bool draw_with_quadtrees;
 
 private:
 
