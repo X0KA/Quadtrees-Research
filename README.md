@@ -55,4 +55,4 @@ As I said before, quadtrees are a data structure that divide the space into 4 su
 
 Even though I'm going to use them from a "video game" aproach, they can be used in a lot of fields, such as image compression.
 
- <img src="images/quadtree-image-compression.png" ><br>
+ <img src="images/quadtree-image-compression.gif" ><br>
