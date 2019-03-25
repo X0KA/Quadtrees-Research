@@ -49,5 +49,10 @@ This are just a **few** ways to part the space explained vrey superficially. The
  
 # Quadtrees
 
-As I said before, quadtrees are a data structure that divide the space into 4 sub regions. 
+As I said before, quadtrees are a data structure that divide the space into 4 sub regions. Each node will have four children, which will have four children each, etc. 
 
+ <img src="images/quadtree-1.png" ><br>
+
+Even though I'm going to use them from a "video game" aproach, they can be used in a lot of fields, such as image compression.
+
+ <img src="images/quadtree-image-compression.png" ><br>
