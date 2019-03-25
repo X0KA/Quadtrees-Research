@@ -30,13 +30,5 @@ bool Quadtree::CheckTouch(const SDL_Rect& rect)
 		pos.y > section.y + section.h)
 		return false;
 
-	/*if ((rect.x < section.x-rect.w/2) ||
-		(rect.x + rect.w) > (section.x + section.w+ rect.w / 2) ||
-		(rect.y < section.y - rect.h / 2) ||
-		(rect.y + rect.h) > (section.y + section.h+ rect.h / 2))
-		return false;*/
-
-
-
 	return true;
 }

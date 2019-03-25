@@ -132,7 +132,6 @@ void TileQuadtree::DrawMap()
 
 				App->render->Blit(tileset->texture,tile.position.x, tile.position.y, &rect);
 
-				//LOG("%d  %d", tiles_contained, size);
 			}
 		}
 
