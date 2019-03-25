@@ -1,6 +1,7 @@
 I am Joan Marín, student of the Bachelor’s Degree in Video Games by UPC at CITM. This content is generated for the second year’s subject Project 2, under supervision of lecturer Ricard Pillosu.
  
-Introduction
+# Introduction
+
 Something I like about coding, is that every task can be approached and solved in different ways.
  
 In video games, when we want to check collisions, render tile maps, render 3D objects, etc. the first solutions that comes to our mind will usually be an exhaustive search, also called brute force search.
@@ -41,11 +42,12 @@ That process is called space partition. There are a lot of ways to divide the sp
  
  <img src="images/aabbtree.png" ><br>
  
-This are just a few ways to part the space explained superficially. There are a lot more of them and honestly, we could spend an entire semester talking about different space partition data structures, but in this article I’m going to focus on Quadtrees.
+As you cans see in the images above, these data structures translate the space into nodes, which have more subnodes. This structure can be represented in tree diagrams, that's why they are called trees.
  
+This are just a **few** ways to part the space explained vrey superficially. There are **a lot more** of them, and honestly, we could spend an entire semester talking about different space partition algorithms, but in this article I’m going to focus on Quadtrees.
  
  
 # Quadtrees
 
-As I said before, quadtrees are a data structure that divide the space into 4 sub regions (we can talk about nodes and subnodes). 
+As I said before, quadtrees are a data structure that divide the space into 4 sub regions. 
 
