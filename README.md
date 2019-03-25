@@ -25,19 +25,25 @@ In order to avoid iterations that are not needed (colliders too far from each ot
  
 That process is called space partition. There are a lot of ways to divide the space, and depending on our needs we will choose one or another.
  
-* Quadtrees: divides the space into 4 equal subsets, each of them might be divided into 4 subsets, etc.
+* **Quadtrees**: divides the space into 4 equal subsets, each of them might be divided into 4 subsets, etc.
 
 <img src="images/quadtree.png" ><br>
 
-* Octrees: similar to the quadtrees, but used in 3D instead of 2D. Each node will have 8 children instead of 4.
+* **Octrees**: similar to the quadtrees, but used in 3D instead of 2D. Each node will have 8 children instead of 4.
 
 <img src="images/octree.png" ><br>
 
-* k-d trees: the space is divided into 2 subspaces, which might not be equal. The “partition lines” are always perpendicular to the coordinates axis.
+* **k-d trees**: the space is divided into 2 subspaces, which might not be equal. The “partition lines” are always perpendicular to the coordinates axis.
 
-* AABB Trees: Creates subspaces for each pair of elements we need to check. Mostly used in dynamic entities like collisions.
+<img src="images/kdtree.png" ><br>
+
+* **AABB Trees**: Creates subspaces for each group of elements we need to check. Mostly used in dynamic entities like collisions.
  
-This are just a few ways to part the space. There are a lot more of them and honestly, we could spend an entire semester talking about different space partition data structures, but in this article I’m going to focus on Quadtrees.
+ <img src="images/aabbtree.png" ><br>
+ 
+This are just a few ways to part the space explained superficially. There are a lot more of them and honestly, we could spend an entire semester talking about different space partition data structures, but in this article I’m going to focus on Quadtrees.
+ 
+ 
  
 # Quadtrees
 
