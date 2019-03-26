@@ -147,28 +147,7 @@ void TileQuadtree::DrawMap()
 
 void TileQuadtree::DrawQuadtree()
 {
-	if (CheckVisibility() == true)
-	{
-		if (level == 1)
-		{
-			App->render->DrawLine(section.x, section.y, section.x, section.y + section.h, 0, 0, 255);
-			App->render->DrawLine(section.x, section.y, section.x + section.w, section.y, 0, 0, 255);
-			App->render->DrawLine(section.x, section.y + section.h, section.x + section.w, section.y + section.h, 0, 0, 255);
-			App->render->DrawLine(section.x + section.w, section.y, section.x + section.w, section.y + section.h, 0, 0, 255);
-		}
+	//TODO 0 : WARMING UP
+	//Haven't worked with recursive functions for a while, so let's start by drawing the nodes
 
-		if (divided == true)
-		{
-			App->render->DrawLine(section.x + section.w / 2, section.y, section.x + section.w / 2, section.y + section.h, 0, 0, 255);
-			App->render->DrawLine(section.x, section.y + section.h / 2, section.x + section.w, section.y + section.h / 2, 0, 0, 255);
-
-			if (level < max_levels - 1)
-			{
-				for (int i = 0; i < 4; ++i)
-				{
-					nodes[i]->DrawQuadtree();
-				}
-			}
-		}
-	}
 }
