@@ -80,7 +80,7 @@ Only by dividing the space twice, improved the performance of our system in a 12
 
 ### Quadtree structure ###
 
-So, now let me explain superficially which I think are the core elements of a quadtree, and then explain briefly what would I add into a quadtree in order to check collisions.
+So, now let me explain superficially which I think are the core elements of a quadtree, and then explain more deeply how I used them in my project.
 
 <img src="images/quadtree-core.png" ><br>
 
@@ -103,3 +103,18 @@ When it comes to the methods, the most important one is the **Split()**, which w
 Then we have the **DrawQuadtree()** which, guess what, is going to draw the quadtrees.
 
 <img src="images/draw-qt.png" ><br>
+
+And obviously the constructor and the cleanup.
+
+### Camera culling with quadtrees ###
+
+So, even thought all my examples were about particles and collisions, I used quadtrees for the camera culling of my game. I didn't mention it because i'll talk about it a little bit more deeply here.
+
+When we are playing a video game, we don't need to render all the map, in fact, we must not, because it's a waste of time. As I said at the beggining, if the map isn't really big, it's not a big deal, but most of the cases it won't be like that, and especially in tiled maps we need to optimize the render process.
+
+Let me put into situation. Let's say I'm developing an RTS with a map of 256x256 tiles. That's a total amount of 65.536 tiles, from which only 500 will appear in the screen, more or less. So, how do we print only the tiles that appear in the screen?
+
+The first solution that might come to our minds is to put a condition before drawing each tile to make sure they appear in the screen, right? **WRONG** We don't want to do that, that's brute force, we're still checking all the tiles. 
+
+What we want to do is to only go across those tiles that appear int the screen, instead of going across all of them and only printing those that are in the screen.
+
