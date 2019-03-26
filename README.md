@@ -202,7 +202,7 @@ The numbers at the left, show the time spent drawing the map with quadtrees, and
 
 ## Things to improve ## 
 
-In isometric maps, I need to store some extra room to store the tiles, like the double I should. That's because each node distributes the space equally to all its subnodes when it splits. Problem about it is that in the first quadtree, there will be a lot of nodes that are located out of the map, which means that will store not a single tile, but still have the same size as the ones that will, and it needs to be solved.
+In isometric maps, I need to create some extra room to store the tiles, like the double needed. That's because each node distributes the space equally to all its subnodes when it splits. Problem about it is that in the first quadtrees, there will be a lot of nodes that are located out of the map, which means that will store not a single tile, but still have the same size as the ones that will, and it needs to be solved.
 
 Even so, I think it's worth it to make a bit of extra room in exchange for the improvement in performance we get. 
 
