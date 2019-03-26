@@ -78,7 +78,10 @@ And in the third frame, we divide all the previous subspaces that had more than 
 
 Only by dividing the space twice, improved the performance of our system in a 1279%, by going from 400 iterations each frame to 29. Amazing, right?
 
-### Quadtree structur ###
+### Quadtree structure ###
 
-Now i'm going to show you the core structure of quadtrees, then explain superfially how I would make a quadtree structure to work with colliders and then i'll explain how I made my camera culling. 
+So, now let me explain superficially which I think are the core elements of a quadtree, and then explain briefly what would I add into a quadtree in order to check collisions.
 
+<img src="images/quadtree-core.png" ><br>
+
+We will find this elements in any quadtree, no matter what we use them for, some functions might change, but the overall purpose will be the same.
