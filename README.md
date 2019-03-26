@@ -84,4 +84,14 @@ So, now let me explain superficially which I think are the core elements of a qu
 
 <img src="images/quadtree-core.png" ><br>
 
-We will find this elements in any quadtree, no matter what we use them for, some functions might change, but the overall purpose will be the same.
+We will find this elements in any quadtree, no matter what we use them for, some functions might change, but the overall purpose will be the same. Obviously, we will need more methods and variables depending on what we use our quadtrees for, but this would be a nice parent class. 
+
+The fact that some methods are virtual in this header does not mean that they have to be, this is how I made it, but as I said at the beggining, you can find your own way of coding them.
+
+Basically, all we need is a rectangle that tells us the **area** the node is occupying.
+
+The **level** and **max_levels** variables tell us in which level the node is in the tree and how much levels can the tree have respectively, so when a node's level is equal to max_levels, it won't be divided under any circumstance.
+
+<img src="images/levels.png" ><br>
+
+And obviously, an array with all the **subnodes**.
