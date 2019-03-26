@@ -114,6 +114,8 @@ When we are playing a video game, we don't need to render all the map, in fact, 
 
 Let me put into situation. Let's say I'm developing an RTS with a map of 256x256 tiles. That's a total amount of 65.536 tiles, from which only 500 will appear in the screen, more or less. So, how do we print only the tiles that appear in the screen?
 
+<img src="images/camera-culling.png" ><br>
+
 The first solution that might come to our minds is to put a condition before drawing each tile to make sure they appear in the screen, right? **WRONG** We don't want to do that, that's brute force, we're still checking all the tiles. 
 
 What we want to do is to only go across those tiles that appear int the screen, instead of going across all of them and only printing those that are in the screen.
