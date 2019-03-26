@@ -67,40 +67,11 @@ void TileQuadtree::Split()
 
 void TileQuadtree::InsertTile(TileData tile)
 {
-	SDL_Rect tile_rect;
-	tile_rect.x = tile.position.x;
-	tile_rect.y = tile.position.y;
-	tile_rect.w = App->map->data.tile_width;
-	tile_rect.h = App->map->data.tile_height;
+	//TODO 1 - If we insert a tile to a node located at the bottom of the tree, add it to the array
 
-	//If the node is in the lowest level, store the tile here
-	if (level == max_levels)
-	{
-		tiles[tiles_contained++] = tile;
-	}
 
-	//In case there are lower subnodes, it will be stored there
-	else if (level < max_levels)			
-	{
-		if (this->CheckTouch({tile_rect}))
-		{
-			//If there are no subnodes yet, split the current node
-			if (divided == false)
-				Split();
-
-			for (int i = 3; i >= 0; --i)
-			{
-				if (nodes[i]->CheckTouch({ tile_rect }))
-				{
-					if (nodes[i]->tiles_contained < nodes[i]->size)
-					{
-						nodes[i]->InsertTile(tile);
-						break;
-					}
-				}
-			}
-		}
-	}
+	//TODO 2 - If we insert a tile to a node that has more subnodes, insert it to the subnode it belongs to
+	
 }
 
 bool TileQuadtree::CheckVisibility()

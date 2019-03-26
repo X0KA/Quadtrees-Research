@@ -24,11 +24,11 @@ public:
 
 	void Split();
 
-	void InsertTile(TileData tile);
+	void InsertTile(TileData tile);		//Add tiles to this node or it's children
 
-	bool CheckVisibility();
+	bool CheckVisibility();				//Check if a node is in the screen
 
-	void DrawMap();
+	void DrawMap();						//Draw all its tiles
 
 
 	//DEBUG
