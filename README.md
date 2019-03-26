@@ -64,7 +64,7 @@ This quadtree divide the total space into four equal regions, which will be divi
 
 This type of structure works mostly with recursive fucntions, which the user will call to the main quadtree but then will be called to all its subnodes. 
 
-OK, nice, now we know how quadtrees divide the space, but how do we use them in our games? How can we take profit of them?
+OK, nice, now we know how quadtrees divide the space, but how can they be usefull in our game?
 
 Let's go back to **particle** systems. Take a look at this images.
 
@@ -76,4 +76,9 @@ In the second frame the space is divided into four subspaces, and each particle 
 
 And in the third frame, we divide all the previous subspaces that had more than 3 particles. As you can see, there are some subspaces which only have one particle, so we won't even need to check their collision. 
 
-Only by dividing the space twice, improved the performance of our game in a 1279%. Amazing, right?
+Only by dividing the space twice, improved the performance of our system in a 1279%, by going from 400 iterations each frame to 29. Amazing, right?
+
+### Quadtree structur ###
+
+Now i'm going to show you the core structure of quadtrees, then explain superfially how I would make a quadtree structure to work with colliders and then i'll explain how I made my camera culling. 
+
