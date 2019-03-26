@@ -118,5 +118,7 @@ Let me put into situation. Let's say I'm developing an RTS with a map of 256x256
 
 The first solution that might come to our minds is to put a condition before drawing each tile to make sure they appear in the screen, right? **WRONG** We don't want to do that, that's brute force, we're still checking all the tiles. 
 
-What we want to do is to only go across those tiles that appear int the screen, instead of going across all of them and only printing those that are in the screen.
+What we want to do is to only go across those tiles that appear int the screen, instead of going across all of them and only printing those that are in the screen. How do we do that?
+
+
 
