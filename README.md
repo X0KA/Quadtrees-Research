@@ -160,6 +160,7 @@ Time to store the tiles in the quadtree. Check if the node we are working with i
 <img src="images/todo-1-2.png" ><br>
 
 **TODO 1 - Solution**
+
 Pretty easy. In this case i don't take care of the size of the array because I take care of it in the todo 2.
 <img src="images/todo-1-solution.png" ><br>
 
@@ -168,4 +169,20 @@ Pretty easy. In this case i don't take care of the size of the array because I t
 <img src="images/todo-2-solution.png" ><br>
 
 **TODO 3 - Draw the map**
+
+Before we start with the todo, I'll explain how I've been printing the map before implementing quadtrees, because you will probably need to get a bit familiar with it.
+
+<img src="images/todo-3-introduction.png" ><br>
+
+The way I've been storing tiled maps is the next: Each map has different layers, which store all the tiles in an array. So I added a quadtree for every layer of the map. Knowing this, I think we can start:
+
+<img src="images/todo-3.png" ><br>
+
+**TODO 3 - Solution**
+
+<img src="images/todo-3-solution.png" ><br>
+
+If you made it here, congratulations. Try pressing F1 once the application is running in order to compare the performance of the App when we're using quadtrees VS when we're using brute force.
+
+## Results ##
 
