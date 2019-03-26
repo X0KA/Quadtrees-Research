@@ -6,6 +6,7 @@
 #include "j1Map.h"
 #include <math.h>
 #include <sstream>
+#include "Brofiler/Brofiler.h"
 
 #include "TileQuadtree.h"
 
@@ -34,13 +35,15 @@ bool j1Map::Awake(pugi::xml_node& config)
 
 void j1Map::Draw()
 {
+	BROFILER_CATEGORY("Map::Draw();", Profiler::Color::Green);
 	if(map_loaded == false)
 		return;
 
 	std::list<MapLayer*>::iterator item = data.layers.begin();
-
+	tiles_rendered = 0;
 	for(; item != data.layers.end(); item = next(item))
 	{
+		
 		MapLayer* layer = *item;
 		if (draw_with_quadtrees == false)
 		{
@@ -57,6 +60,7 @@ void j1Map::Draw()
 						iPoint pos = MapToWorld(x, y);
 
 						App->render->Blit(tileset->texture, pos.x, pos.y, &r);
+						tiles_rendered++;
 					}
 				}
 			}
@@ -66,7 +70,10 @@ void j1Map::Draw()
 			layer->tile_tree->DrawMap();
 			layer->tile_tree->DrawQuadtree();
 		}
+
+		
 	}
+	LOG("Tiles drawn: %d ", tiles_rendered);
 }
 
 int Properties::Get(const char* value, int default_value) const

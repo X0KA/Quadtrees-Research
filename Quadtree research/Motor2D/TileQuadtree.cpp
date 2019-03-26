@@ -131,7 +131,7 @@ void TileQuadtree::DrawMap()
 				SDL_Rect rect = tileset->GetTileRect(tile.id);
 
 				App->render->Blit(tileset->texture,tile.position.x, tile.position.y, &rect);
-
+				App->map->tiles_rendered++;
 			}
 		}
 

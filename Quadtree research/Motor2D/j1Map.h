@@ -141,6 +141,9 @@ public:
 	MapData data;
 	bool draw_with_quadtrees;
 
+	//TEST
+	uint tiles_rendered;
+
 private:
 
 	pugi::xml_document	map_file;
