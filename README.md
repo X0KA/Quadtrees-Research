@@ -95,3 +95,11 @@ The **level** and **max_levels** variables tell us in which level the node is in
 <img src="images/levels.png" ><br>
 
 And obviously, an array with all the **subnodes**.
+
+When it comes to the methods, the most important one is the **Split()**, which will divide the node into 4 subnodes.
+
+<img src="images/split-function.png" ><br>
+
+Then we have the **DrawQuadtree()** which, guess what, is going to draw the quadtrees.
+
+<img src="images/draw-qt.png" ><br>
