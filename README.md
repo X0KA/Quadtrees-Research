@@ -186,3 +186,12 @@ If you made it here, congratulations. Try pressing F1 once the application is ru
 
 ## Results ##
 
+Time to see how our application is doing. Let me remind you that I'm printing a 256 x 256 tiles map.
+
+<img src="images/tiles_drawn.png" ><br>
+
+As you can see here, it's really important to optimize the drawing methods of our games. We've gone from drawing **65.536 tiles each frame**, to drawing only those that are on the screen, which are 231. This value might change a bit depending on the position of our camera, but it wouldn't make a big difference.
+
+And how does this affect the performance of our game? Well, let's see:
+
+<img src="images/map_drawing_ms.png" ><br>
