@@ -138,9 +138,34 @@ I've also added two functions:
 
 **CheckVisibility()** will return true if the node is in the screen, and false if it does not.
 
-**DrawMap()** if the node has children, what means it is not at the bottom of the tree, it will check if they are on the screen. each node in the screen will call it, if they are not they won't. When a node located at the bottom of the tree calls it, it will draw the map.
+**DrawMap()** if the node has children, what means it is not at the bottom of the tree, it will check if they are on the screen. each node in the screen will call it, if they are not they won't. When a node located at the bottom of the tree calls it, it will draw the tiles stored in his array.
 
+#### Try to do it by yourself! ####
 
+This is where the fun begins.
 
+**TODO 0: WARMING UP**
+Draw the quadtrees! Actually showed it before, but this is a pretty easy one, but since recursive functions are not the most common thing, we might need to start with a easy one.
 
+<img src="images/todo-0.png" ><br>
+
+**TODO 0: WARMING UP - SOLUTION**
+As I said, pretty easy. There are different ways of doing it, this is the one I liked the most.
+
+<img src="images/todo-0-solution.png" ><br>
+
+**TODO 1 & 2 - Store the tiles** 
+Time to store the tiles in the quadtree. Check if the node we are working with is located at the bottom of the tree. If it is, store the tile in it, if it's not, insert the tile to the pertinent subnode.
+
+<img src="images/todo-1-2.png" ><br>
+
+**TODO 1 - Solution**
+Pretty easy. In this case i don't take care of the size of the array because I take care of it in the todo 2.
+<img src="images/todo-1-solution.png" ><br>
+
+**TODO 2 - Solution**
+
+<img src="images/todo-2-solution.png" ><br>
+
+**TODO 3 - Draw the map**
 
