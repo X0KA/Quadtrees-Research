@@ -138,7 +138,7 @@ I've also added two functions:
 
 **CheckVisibility()** will return true if the node is in the screen, and false if it does not.
 
-**DrawMap()** if the node has children, it will check if they are on the screen. each node in the screen will call it, if they are not they won't. When a node located at the bottom of the tree calls it, it will draw the map.
+**DrawMap()** if the node has children, what means it is not at the bottom of the tree, it will check if they are on the screen. each node in the screen will call it, if they are not they won't. When a node located at the bottom of the tree calls it, it will draw the map.
 
 
 
