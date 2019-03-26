@@ -88,7 +88,7 @@ We will find this elements in any quadtree, no matter what we use them for, some
 
 The fact that some methods are virtual in this header does not mean that they have to be, this is how I made it, but as I said at the beggining, you can find your own way of coding them.
 
-Basically, all we need is a rectangle that tells us the **area** the node is occupying.
+Basically, all we need is a rectangle that tells us the area the node is occupying (**section**).
 
 The **level** and **max_levels** variables tell us in which level the node is in the tree and how much levels can the tree have respectively, so when a node's level is equal to max_levels, it won't be divided under any circumstance.
 
@@ -99,6 +99,10 @@ And obviously, an array with all the **subnodes**.
 When it comes to the methods, the most important one is the **Split()**, which will divide the node into 4 subnodes.
 
 <img src="images/split-function.png" ><br>
+
+The **CheckTouch()** tells us if a rectangle fits or not to the current node (I know the name is pretty bad, I apologize).
+
+<img src="images/checktouch.png" ><br>
 
 Then we have the **DrawQuadtree()** which, guess what, is going to draw the quadtrees.
 
@@ -119,6 +123,24 @@ Let me put into situation. Let's say I'm developing an RTS with a map of 256x256
 The first solution that might come to our minds is to put a condition before drawing each tile to make sure they appear in the screen, right? **WRONG** We don't want to do that, that's brute force, we're still checking all the tiles. 
 
 What we want to do is to only go across those tiles that appear int the screen, instead of going across all of them and only printing those that are in the screen. How do we do that?
+
+I will create a quadtree in which i will store all the tiles distributed among all the nodes. Unlike particles, tiles are static, so I will only need to place them once. I will store the tiles in the nodes that are at the **bottom of the tree**, so I don't need to create more nodes and alocate data during the update phase.
+
+Before, I showed you a screenshot of what the header of a quadtre would look like. To do this i will create a children class from that one. The header looks like this:
+
+<img src="images/tile-quadtree-header.png" ><br>
+
+First of all, I've created a struct called **TileData** which will store the position and ID of a tile. There will be one of them for each tile in the map. Each node will have a dinamic array in order to store them, but as I said before, I will only store the tiles in the nodes located at the bottom of the tree, so the arrays of the nodes that are not at the bottom will be **NULL**.
+
+The **size** of the node will tell us how many tiles it can store, and **tiles_contained** how many it actually stores.
+
+I've also added two functions:
+
+**CheckVisibility()** will return true if the node is in the screen, and false if it does not.
+
+**DrawMap()** if the node has children, it will check if they are on the screen. each node in the screen will call it, if they are not they won't. When a node located at the bottom of the tree calls it, it will draw the map.
+
+
 
 
 
