@@ -15,7 +15,7 @@ public:
 
 	virtual void CleanUp() {};
 
-	bool CheckTouch(const SDL_Rect& rect);
+	bool CheckTouch(const SDL_Rect& rect);	//Check if a rectangle fits inside the quadtree
 
 protected:
 	
@@ -24,7 +24,6 @@ protected:
 	uint level;				//Position in the tree
 	SDL_Rect section;		//Position and size
 	
-	Quadtree* nodes[4];		//Children
 };
 
 #endif // !__QUADTREE__H_

@@ -4,7 +4,7 @@
 #include "Quadtree.h"
 
 
-struct TileData
+struct TileData												
 {
 	TileData() {}
 	TileData(uint id, iPoint position) :id(id),position(position) {};

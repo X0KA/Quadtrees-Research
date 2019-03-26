@@ -32,3 +32,4 @@ bool Quadtree::CheckTouch(const SDL_Rect& rect)
 
 	return true;
 }
+

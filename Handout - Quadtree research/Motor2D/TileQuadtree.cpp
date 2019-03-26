@@ -91,29 +91,11 @@ bool TileQuadtree::CheckVisibility()
 
 void TileQuadtree::DrawMap()
 {
-	if (CheckVisibility()) 
-	{
-		if (level == max_levels)
-		{
-			for (int i = 0; i < tiles_contained; ++i)
-			{
-				TileData tile = tiles[i];
-				TileSet* tileset = App->map->GetTilesetFromTileId(tile.id);
-				SDL_Rect rect = tileset->GetTileRect(tile.id);
+	//TODO 3 - Let's draw the map
+	//If the node is in the screen and is located at the bottom of the tree, draw its tiles
 
-				App->render->Blit(tileset->texture,tile.position.x, tile.position.y, &rect);
-				App->map->tiles_rendered++;
-			}
-		}
 
-		if (divided == true)
-		{
-			for (int i = 0; i < 4; ++i)
-			{
-				nodes[i]->DrawMap();
-			}
-		}
-	}
+	//If it's not in the bottom of the tree, make its subnodes call the function
 }
 
 void TileQuadtree::DrawQuadtree()
