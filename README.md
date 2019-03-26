@@ -61,3 +61,19 @@ There are different types of quadtrees, but I will focus on the "Region Quadtree
 This quadtree divide the total space into four equal regions, which will be divided into four equal regions and so on until we reach the nodes that are at the bottom of the tree. 
 
 <img src="images/quadtree-1.png" ><br>
+
+This type of structure works mostly with recursive fucntions, which the user will call to the main quadtree but then will be called to all its subnodes. 
+
+OK, nice, now we know how quadtrees divide the space, but how do we use them in our games? How can we take profit of them?
+
+Let's go back to **particle** systems. Take a look at this images.
+
+<img src="images/particles-gif.gif" ><br>
+
+In the first frame we see how the space is not divided, therefore, we check collisions between all the particles (brute force). And in a system for only 20 particles, we need 400 iterations for each frame. It's important to know that the checks we make increase exponentially as we add more particles: with 10 particles we need 100 iterations, with 20 particles, 400 iterations, with 30 particles, 900 iterations, and so on.
+
+In the second frame the space is divided into four subspaces, and each particle only checks its collision with the other particles in its own subspace. As you can see, it reduces the number of iterations a lot.
+
+And in the third frame, we divide all the previous subspaces that had more than 3 particles. As you can see, there are some subspaces which only have one particle, so we won't even need to check their collision. 
+
+Only by dividing the space twice, improved the performance of our game in a 1279%. Amazing, right?
