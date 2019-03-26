@@ -195,3 +195,31 @@ As you can see here, it's really important to optimize the drawing methods of ou
 And how does this affect the performance of our game? Well, let's see:
 
 <img src="images/map_drawing_ms.png" ><br>
+
+The numbers at the left, show the time spent drawing the map with quadtrees, and the ones at the right show the time spent using brute force. From spending more than 230 ms each frame to draw the map, we now spend 2 /4 seconds. So we improved the performance of our game in a 11.500%, not bad at all, huh?
+
+## Things to improve ## 
+
+In isometric maps, I need to store some extra room to store the tiles, like the double I should. That's because each node distributes the space equally to all its subnodes when it splits. Problem about it is that in the first quadtree, there will be a lot of nodes that are located out of the map, which means that will store not a single tile, but still have the same size as the ones that will, and it needs to be solved.
+
+Even so, I think it's worth it to make a bit of extra room in exchange for the improvement in performance we get. 
+
+I'll work to solve it and I will update this article as soon as I find a solution.
+
+If you made it down here, I hope this article was useful :)
+
+## Webgraphy ##
+
+[Quick Tip: Use Quadtrees to Detect Likely Collisions in 2D Space](https://gamedevelopment.tutsplus.com/tutorials/quick-tip-use-quadtrees-to-detect-likely-collisions-in-2d-space--gamedev-374)
+
+[JavaScript QuadTree Implementation](http://www.mikechambers.com/blog/2011/03/21/javascript-quadtree-implementation/)
+
+[Pyramid Panic - Feature - QuadTree Optimizations](https://steemit.com/utopian-io/@carsonroscoe/pyramid-panic-feature-quadtree-optimizations)
+
+[Examining Quadtrees, k-d Trees, and Tile Arrays](https://pdfs.semanticscholar.org/422f/63b62aaa6c8209b0dcbe8a53e360ad90514d.pdf)
+
+[Teoría de colisiones 2D: QuadTree](https://www.genbeta.com/desarrollo/teoria-de-colisiones-2d-quadtree)
+
+[AABB Trees for Collision Detection](https://goharsha.com/blog/aabb-trees-for-collision-detection/)
+
+[Quadtrees – Hierarchical Grids](http://www.cs.tau.ac.il/~haimk/seminar12b/Quadtrees.pdf)
