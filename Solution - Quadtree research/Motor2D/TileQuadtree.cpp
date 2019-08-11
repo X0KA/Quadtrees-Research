@@ -11,29 +11,13 @@
 #include "j1Textures.h"
 
 
-
-
-TileQuadtree::TileQuadtree(uint max_levels, SDL_Rect section, uint size, uint level): Quadtree(max_levels, section, level), size(size)
+TileQuadtree::TileQuadtree(uint max_levels, SDL_Rect section,uint level): Quadtree(max_levels, section, level)
 {
 	//Set the subnodes as nullptr
 	for (int i = 0; i < 4; i++)
 		nodes[i] = nullptr;
 
-	/*We will only store the tiles in the bottom nodes, 
-	so, if this node will have subnodes, it won't need room for tiles*/
-	if (level != max_levels)
-		tiles =NULL;
-
-	else
-	{
-		tiles = new TileData[size];
-
-		for (int i = 0; i < size; ++i)
-			tiles[i] = TileData(0, { 0,0 });
-
-	}
-
-	tiles_contained = 0;
+	this->size = 50;
 
 	assert(level <= max_levels,"MAX LEVELS > LEVELS");
 }
@@ -49,17 +33,19 @@ void TileQuadtree::CleanUp()
 		}
 
 	}
-	RELEASE(tiles);
+	//RELEASE(tiles);
+
+	tiles_vector.clear();
 }
 
 void TileQuadtree::Split()
 {
 	if (level < max_levels && divided == false)
 	{
-		nodes[0] = new TileQuadtree(max_levels, { section.x,section.y, section.w / 2, section.h / 2 }, size/4, level + 1);
-		nodes[1] = new TileQuadtree(max_levels, { section.x + section.w / 2,section.y, section.w / 2,section.h / 2 }, size/ 4, level + 1);
-		nodes[2] = new TileQuadtree(max_levels, { section.x,section.y + section.h / 2 , section.w / 2, section.h / 2 }, size/ 4, level + 1);
-		nodes[3] = new TileQuadtree(max_levels, { section.x + section.w / 2,section.y + section.h / 2, section.w / 2,section.h / 2 }, size/4 , level + 1);
+		nodes[0] = new TileQuadtree(max_levels, { section.x,section.y, section.w / 2, section.h / 2 },level + 1);
+		nodes[1] = new TileQuadtree(max_levels, { section.x + section.w / 2,section.y, section.w / 2,section.h / 2 }, level + 1);
+		nodes[2] = new TileQuadtree(max_levels, { section.x,section.y + section.h / 2 , section.w / 2, section.h / 2 }, level + 1);
+		nodes[3] = new TileQuadtree(max_levels, { section.x + section.w / 2,section.y + section.h / 2, section.w / 2,section.h / 2 },  level + 1);
 		divided = true;
 	}
 
@@ -76,7 +62,8 @@ void TileQuadtree::InsertTile(TileData tile)
 	//If the node is in the lowest level, store the tile here
 	if (level == max_levels)
 	{
-		tiles[tiles_contained++] = tile;
+		//tiles[tiles_contained++] = tile;
+		tiles_vector.push_back(tile);
 	}
 
 	//In case there are lower subnodes, it will be stored there
@@ -92,11 +79,8 @@ void TileQuadtree::InsertTile(TileData tile)
 			{
 				if (nodes[i]->CheckTouch({ tile_rect }))
 				{
-					if (nodes[i]->tiles_contained < nodes[i]->size)
-					{
 						nodes[i]->InsertTile(tile);
 						break;
-					}
 				}
 			}
 		}
@@ -124,9 +108,9 @@ void TileQuadtree::DrawMap()
 	{
 		if (level == max_levels)
 		{
-			for (int i = 0; i < tiles_contained; ++i)
+			for (int i = 0; i < tiles_vector.size(); ++i)
 			{
-				TileData tile = tiles[i];
+				TileData tile = tiles_vector[i];
 				TileSet* tileset = App->map->GetTilesetFromTileId(tile.id);
 				SDL_Rect rect = tileset->GetTileRect(tile.id);
 

@@ -438,7 +438,7 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 		quadT_position.x = -layer_size.x + ((layer->width + 1)*App->map->data.tile_width / 2);
 		break;
 	}
-	layer->tile_tree = new TileQuadtree(9, {quadT_position.x, 0, layer_size.x,layer_size.y}, layer->width*layer->height*3);
+	layer->tile_tree = new TileQuadtree(9, {quadT_position.x, 0, layer_size.x,layer_size.y});
 	//TEST
 
 	if(layer_data == NULL)

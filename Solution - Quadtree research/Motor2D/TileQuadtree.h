@@ -2,7 +2,7 @@
 #define _TILEQUADTREE_H__
 
 #include "Quadtree.h"
-
+#include <vector>
 
 struct TileData												
 {
@@ -17,7 +17,7 @@ class TileQuadtree : public Quadtree
 {
 public:
 
-	TileQuadtree(uint max_levels, SDL_Rect section, uint size, uint level=1);
+	TileQuadtree(uint max_levels, SDL_Rect section, uint level=1);
 
 	void CleanUp();
 
@@ -38,12 +38,10 @@ public:
 protected: 
 
 	TileQuadtree* nodes[4];		//Subnodes of the current node
-	
-	TileData* tiles;			//Array which contains all the tiles
+
+	std::vector<TileData>	tiles_vector;
 
 	uint	size;				//Amount of tiles this node can store
-	uint	tiles_contained;	//Amount of tiles this node currently stores
-	
 
 };
 
