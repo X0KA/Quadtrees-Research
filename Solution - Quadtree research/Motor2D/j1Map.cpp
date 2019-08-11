@@ -422,7 +422,6 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 	LoadProperties(node, layer->properties);
 	pugi::xml_node layer_data = node.child("data");
 
-	//TEST
 	iPoint layer_size;
 	iPoint quadT_position(0,0);
 	switch (data.type)
@@ -439,7 +438,7 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 		break;
 	}
 	layer->tile_tree = new TileQuadtree(9, {quadT_position.x, 0, layer_size.x,layer_size.y});
-	//TEST
+
 
 	if(layer_data == NULL)
 	{
@@ -455,11 +454,10 @@ bool j1Map::LoadLayer(pugi::xml_node& node, MapLayer* layer)
 		int i = 0;
 		for(pugi::xml_node tile = layer_data.child("tile"); tile; tile = tile.next_sibling("tile"))
 		{
-			//TEST
 			iPoint tile_map_coordinates(App->map->MapToWorld((i - int(i / layer->width)*layer->width), int(i / layer->width)));
 			TileData tiledd(tile.attribute("gid").as_int(0), tile_map_coordinates);
 			layer->tile_tree->InsertTile(tiledd);
-			//TEST
+			
 
 			layer->data[i++] = tile.attribute("gid").as_int(0);
 		}
