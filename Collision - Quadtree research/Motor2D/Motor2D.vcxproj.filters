@@ -37,6 +37,15 @@
     <ClCompile Include="Quadtree.cpp">
       <Filter>Tools\Quadtrees</Filter>
     </ClCompile>
+    <ClCompile Include="j1Collisions.cpp">
+      <Filter>Game Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>Game Files\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Game Files\Modules\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1App.h">
@@ -84,6 +93,15 @@
     <ClInclude Include="Quadtree.h">
       <Filter>Tools\Quadtrees</Filter>
     </ClInclude>
+    <ClInclude Include="Collisions.h">
+      <Filter>Game Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.h">
+      <Filter>Game Files\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Game Files\Modules\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
@@ -118,6 +136,9 @@
     </Filter>
     <Filter Include="Tools\Quadtrees">
       <UniqueIdentifier>{138d002b-eb36-4e4b-940f-3fd0c2861ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Files\Modules\Entities">
+      <UniqueIdentifier>{c093d3e7-6db2-41fc-bf0a-c6cdcb3af461}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
