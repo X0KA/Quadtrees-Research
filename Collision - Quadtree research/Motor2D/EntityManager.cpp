@@ -6,7 +6,6 @@
 EntityManager::EntityManager()
 {
 
-
 }
 
 bool EntityManager::Start()
@@ -52,6 +51,8 @@ Entity* EntityManager::AddEntity(int x, int y)
 	item->section.y = y;
 	
 	entities.push_back(item);
+
+	item->Start();
 
 	return item;
 }

@@ -37,14 +37,14 @@
     <ClCompile Include="Quadtree.cpp">
       <Filter>Tools\Quadtrees</Filter>
     </ClCompile>
-    <ClCompile Include="j1Collisions.cpp">
-      <Filter>Game Files\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="EntityManager.cpp">
       <Filter>Game Files\Modules\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Game Files\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Collisions.cpp">
+      <Filter>Game Files\Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

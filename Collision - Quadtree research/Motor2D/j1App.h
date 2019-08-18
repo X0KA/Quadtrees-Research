@@ -15,6 +15,7 @@ class j1Textures;
 class j1Scene;
 class j1Map;
 class EntityManager;
+class j1Collision;
 
 class j1App
 {
@@ -78,6 +79,7 @@ public:
 	j1Scene*			scene = NULL;
 	j1Map*				map = NULL;
 	EntityManager*		entityManager = NULL;
+	j1Collision*		collisions = NULL;
 
 
 private:

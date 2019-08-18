@@ -3,17 +3,22 @@
 #include "j1App.h"
 #include "j1Window.h"
 
+#include "Collisions.h"
+
 Entity::Entity()
 {
-	section = { 0,0,50,50 };
+	section = { 0,0,20,20 };
 	
 	direction = Movement_Direction(rand() % 4 + 1);
 	
-	velocity = rand() % 3 + 3;
+	velocity = rand() % 4 + 3;
 }
 
 bool Entity::Start()
 {
+	
+	collider = App->collisions->AddCollider(section, COLLIDER_RECT,this);
+
 	return true;
 }
 
@@ -21,6 +26,8 @@ bool Entity::Update()
 {
 	Move();
 	Draw();
+	collider->SetPos(section.x, section.y);
+	hitting = false;
 	return true;
 }
 
@@ -31,7 +38,11 @@ bool Entity::CleanUp()
 
 void Entity::Draw()
 {
-	App->render->DrawQuad(section,255,0,0,150);
+	if (!hitting)
+		App->render->DrawQuad(section,255,0,0,150);
+
+	else
+		App->render->DrawQuad(section, 0, 255, 0, 150);
 }
 
 void Entity::Move()
@@ -64,4 +75,9 @@ void Entity::Move()
 		break;
 	}
 
+}
+
+void Entity::OnCollision(Collider* c1, Collider* c2)
+{
+	hitting = true;
 }

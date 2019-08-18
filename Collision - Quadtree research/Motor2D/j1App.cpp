@@ -11,6 +11,7 @@
 #include "j1Scene.h"
 #include "j1App.h"
 #include "EntityManager.h"
+#include "Collisions.h"
 
 #include "Brofiler/Brofiler.h"
 
@@ -24,6 +25,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new j1Textures();
 	scene = new j1Scene();
 	entityManager = new EntityManager();
+	collisions = new j1Collision();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -32,6 +34,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(scene);
 	AddModule(entityManager);
+	AddModule(collisions);
 
 	// render last to swap buffer
 	AddModule(render);

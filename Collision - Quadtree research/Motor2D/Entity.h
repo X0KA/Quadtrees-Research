@@ -4,6 +4,8 @@
 #include "SDL/include/SDL.h"
 #include "p2Point.h"
 
+struct Collider;
+
 enum class Movement_Direction {
 	NONE=0,
 	UPWARDS,
@@ -26,12 +28,15 @@ public:
 
 	void Draw();
 	void Move();
+	void OnCollision(Collider* c1, Collider* c2);
 
 public:
 	
 	SDL_Rect section;
 	Movement_Direction direction;
 	int velocity;
+	Collider* collider;
+	bool hitting=false;
 };
 
 #endif

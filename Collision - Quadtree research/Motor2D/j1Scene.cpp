@@ -32,11 +32,6 @@ bool j1Scene::Awake()
 bool j1Scene::Start()
 {
 
-	App->entityManager->AddEntity(500,500);
-	App->entityManager->AddEntity(500, 500);
-
-
-
 	return true;
 }
 
