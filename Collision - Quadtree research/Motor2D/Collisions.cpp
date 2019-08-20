@@ -2,6 +2,8 @@
 #include "j1Render.h"
 #include "j1App.h"
 #include "j1Input.h"
+#include "CollisionTree.h"
+#include "j1Window.h"
 
 
 j1Collision::j1Collision()
@@ -21,11 +23,26 @@ j1Collision::j1Collision()
 	matrix[COLLIDER_MAX][COLLIDER_NONE] = false;
 	matrix[COLLIDER_MAX][COLLIDER_RECT] = false;
 
+	
+
 }
 
 // Destructor
 j1Collision::~j1Collision()
 {}
+
+bool j1Collision::Start()
+{
+	SDL_Rect screenRect = { 0,0,0,0 };
+	screenRect.w = App->win->GetWindowWidth();
+	screenRect.h = App->win->GetWindowHeight();
+
+	collisionTree = CollisionTree(5, screenRect);
+
+	collisionTree.FullSplit();
+
+	return true;
+}
 
 bool j1Collision::PreUpdate()
 {
@@ -77,7 +94,10 @@ bool j1Collision::PreUpdate()
 		}
 	}
 
+	
+
 	return true;
+
 }
 
 // Called before render is available
@@ -85,6 +105,8 @@ bool j1Collision::PostUpdate()
 {
 
 	DebugDraw();
+
+	collisionTree.DrawQuadtree();
 
 	return true;
 }

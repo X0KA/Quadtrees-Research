@@ -48,6 +48,7 @@ bool j1Scene::Update(float dt)
 		int x, y;
 		App->input->GetMousePosition(x,y);
 		App->entityManager->AddEntity(x, y);
+		LOG("%d colliders creaed", ++collidersCreated);
 	}
 
 	return true;

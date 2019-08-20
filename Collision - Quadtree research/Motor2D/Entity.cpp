@@ -36,7 +36,7 @@ bool Entity::CleanUp()
 	return true;
 }
 
-void Entity::Draw()
+void Entity::Draw() const
 {
 	if (!hitting)
 		App->render->DrawQuad(section,255,0,0,150);

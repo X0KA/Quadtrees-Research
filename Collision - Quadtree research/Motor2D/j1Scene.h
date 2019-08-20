@@ -40,6 +40,8 @@ private:
 	TileQuadtree* skere;
 
 	SDL_Texture* debug_tex;
+
+	int collidersCreated = 0;
 };
 
 #endif // __j1SCENE_H__

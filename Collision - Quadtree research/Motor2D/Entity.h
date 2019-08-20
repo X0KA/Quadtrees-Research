@@ -26,7 +26,7 @@ public:
 
 public:
 
-	void Draw();
+	void Draw() const ;
 	void Move();
 	void OnCollision(Collider* c1, Collider* c2);
 

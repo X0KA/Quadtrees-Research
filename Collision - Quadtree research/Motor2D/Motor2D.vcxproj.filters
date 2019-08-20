@@ -46,6 +46,9 @@
     <ClCompile Include="Collisions.cpp">
       <Filter>Game Files\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionTree.cpp">
+      <Filter>Tools\Quadtrees</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1App.h">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Game Files\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTree.h">
+      <Filter>Tools\Quadtrees</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 #ifndef _COLLISIONS_H__
 #define _COLLISIONS_H__
-#define MAX_COLLIDERS 1000
+#define MAX_COLLIDERS 4000
 
 #include "j1Module.h"
 #include "SDL/include/SDL.h"
@@ -10,7 +10,7 @@
 #include "j1Module.h"
 #include "j1App.h"
 #include "Entity.h"
-
+#include "CollisionTree.h"
 
 enum COLLIDER_TYPE
 {
@@ -46,6 +46,7 @@ public:
 	j1Collision();
 	~j1Collision();
 
+	bool Start() override;
 	bool PreUpdate() override;
 	bool PostUpdate() override;
 	bool CleanUp() override;
@@ -58,5 +59,7 @@ private:
 	Collider * colliders[MAX_COLLIDERS];
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
 	bool debug = false;
+	CollisionTree collisionTree;
+
 };
 #endif

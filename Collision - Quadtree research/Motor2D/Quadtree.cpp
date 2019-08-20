@@ -6,6 +6,14 @@
 #include "j1Render.h"
 #include "j1App.h"
 
+Quadtree::Quadtree()
+{
+	divided = false;
+	max_levels = 0;
+	level = 0;
+	section = { 0,0,0,0 };
+}
+
 Quadtree::Quadtree(uint max_levels, SDL_Rect section, uint level) :max_levels(max_levels), level(level), section(section)
 {
 	divided = false;

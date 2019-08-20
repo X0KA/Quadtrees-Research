@@ -5,6 +5,9 @@ class Quadtree {
 
 public:
 
+	//Default constructor
+	Quadtree();
+
 	//Constructor
 	Quadtree(uint max_levels, SDL_Rect section, uint level = 1);
 
