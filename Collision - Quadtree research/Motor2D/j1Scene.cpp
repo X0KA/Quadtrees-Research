@@ -44,11 +44,28 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	if (App->input->GetMouseButtonDown(1) == KEY_DOWN || App->input->GetMouseButtonDown(1) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
 		int x, y;
 		App->input->GetMousePosition(x,y);
 		App->entityManager->AddEntity(x, y);
 		LOG("%d colliders creaed", ++collidersCreated);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_REPEAT) {
+		int x, y;
+		App->input->GetMousePosition(x, y);
+		App->entityManager->AddEntity(x, y);
+		LOG("%d colliders creaed", ++collidersCreated);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_REPEAT) {
+		for (int i =0; i < 10; ++i)
+		{
+			int x, y;
+			App->input->GetMousePosition(x, y);
+			App->entityManager->AddEntity(x, y);
+			LOG("%d colliders creaed", ++collidersCreated);
+		}
 	}
 
 	return true;

@@ -7,13 +7,14 @@
 struct Collider;
 
 class CollisionTree : public Quadtree {
+
 public:
 
 	//Defuault constructor
 	CollisionTree();
 
 	//Constructor
-	CollisionTree(uint max_levels, SDL_Rect section, uint level = 1);
+	CollisionTree(uint max_levels, SDL_Rect section,uint level = 1);
 	
 	void CleanUp();
 
@@ -28,6 +29,12 @@ public:
 
 	bool CheckTouch(const SDL_Rect& rect);	
 
+	void InsertCollider(Collider* collider);
+
+	void CleanTree();
+
+	void DetectCollisions();
+
 private:
 
 	//Vector containing all the colliders
@@ -35,6 +42,11 @@ private:
 
 	//Children of this node
 	CollisionTree* nodes[4];
+
+private:
+
+	bool full;
+	bool empty;
 
 };
 

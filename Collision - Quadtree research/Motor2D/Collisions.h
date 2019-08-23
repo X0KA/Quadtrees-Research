@@ -1,6 +1,6 @@
 #ifndef _COLLISIONS_H__
 #define _COLLISIONS_H__
-#define MAX_COLLIDERS 4000
+#define MAX_COLLIDERS 5000
 
 #include "j1Module.h"
 #include "SDL/include/SDL.h"
@@ -21,6 +21,8 @@ enum COLLIDER_TYPE
 
 struct Collider
 {
+	
+
 	SDL_Rect rect;
 	bool active=true;
 	bool to_delete = false;
@@ -32,7 +34,7 @@ struct Collider
 
 	void SetPos(int x, int y)
 	{
-		rect.x = x;
+ 		rect.x = x;
 		rect.y = y;
 	}
 
@@ -41,6 +43,9 @@ struct Collider
 
 class j1Collision : public j1Module
 {
+
+	friend CollisionTree;
+
 public:
 
 	j1Collision();
@@ -56,10 +61,17 @@ public:
 
 private:
 
+	void FillCollisionTree();
+
+private:
+
 	Collider * colliders[MAX_COLLIDERS];
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
 	bool debug = false;
 	CollisionTree collisionTree;
+
+	//TEST
+	bool bruteForce = true;
 
 };
 #endif

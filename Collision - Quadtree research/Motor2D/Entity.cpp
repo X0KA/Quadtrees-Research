@@ -7,7 +7,7 @@
 
 Entity::Entity()
 {
-	section = { 0,0,20,20 };
+	section = { 0,0,10,10 };
 	
 	direction = Movement_Direction(rand() % 4 + 1);
 	
